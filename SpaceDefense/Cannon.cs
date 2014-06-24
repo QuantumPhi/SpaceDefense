@@ -12,5 +12,12 @@ namespace SpaceDefense
         protected int time = 0;
 
         public Cannon() : base("CANNON", 32, 32, "cannon.png") { }
+
+        public override void Update()
+        {
+            base.Update();
+
+            
+        }
     }
 }
