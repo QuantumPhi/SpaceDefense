@@ -1,1 +1,9 @@
 C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\bin\Debug\SpaceDefense.exe.config
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\bin\Debug\SpaceDefense.exe
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\bin\Debug\SpaceDefense.pdb
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\bin\Debug\Engine.dll
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\obj\Debug\SpaceDefense.csprojResolveAssemblyReference.cache
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\obj\Debug\SpaceDefense.Properties.Resources.resources
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\obj\Debug\SpaceDefense.csproj.GenerateResource.Cache
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\obj\Debug\SpaceDefense.exe
+C:\Users\tarik.onalan\git\SpaceDefense\SpaceDefense\obj\Debug\SpaceDefense.pdb

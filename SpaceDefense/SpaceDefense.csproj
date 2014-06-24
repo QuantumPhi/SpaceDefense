@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1F1BC31-ECF5-49CB-91B2-2C4CD179D5CA}</ProjectGuid>
+    <ProjectGuid>{0CE244A6-811D-45F6-AECC-739B410E0087}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SpaceDefense</RootNamespace>

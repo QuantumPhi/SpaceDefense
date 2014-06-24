@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,15 @@ namespace SpaceDefense
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Game.Initialize(800, 600, 60, new Level());
+            Game.SetWindowTitle("SPACE DEFENSE");
+
+            while (!Game.quit)
+            {
+                Game.Update();
+                Application.DoEvents();
+            }
         }
     }
 }

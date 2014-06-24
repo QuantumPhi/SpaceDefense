@@ -9,6 +9,14 @@ namespace SpaceDefense
 {
     class Level : State
     {
+        public override void Create()
+        {
+            base.Create();
+        }
 
+        public override void Update()
+        {
+            base.Update();
+        }
     }
 }
