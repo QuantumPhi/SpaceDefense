@@ -12,15 +12,12 @@ namespace SpaceDefense
     {
         public static float SPEED = 16;
 
-        protected Vector3f velocity;
-        protected int zTarget;
+        protected Vector2f velocity;
 
-        public Laser(Vector3f position, GameObject target)
-            : base("LASER", 2, 32, "laser.png")
+        public Laser(Vector2f direction)
+            : base("LASER", 2, 64, "laser.png")
         {
-            zTarget = target.ZOrder;
-            velocity = new Vector3f(new Vector3f(target.Position.X - position.X, target.Position.Y - position.Y, target.ZOrder).Normalize(), SPEED);
-            Rotation = new Vector3f(0, 1, 0).Angle(velocity);
+            velocity = new Vector2f(direction.Normalize() as Vector2f, SPEED);
         }
 
         public override void Update()
@@ -29,10 +26,10 @@ namespace SpaceDefense
 
             Position.X -= velocity.X;
             Position.Y -= velocity.Y;
-            ZOrder -= (int)velocity.Z;
 
-            Scale.X = 10f / ZOrder;
-            Scale.Y = 10f / ZOrder;
+            if (Position.X > Game.WindowWidth / 2 + 100 || Position.X < -Game.WindowWidth / 2 - 100 ||
+                Position.Y > Game.WindowHeight / 2 + 100 || Position.Y < -Game.WindowHeight / 2 - 100)
+                IsDead = true;
         }
     }
 }
