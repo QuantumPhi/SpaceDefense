@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SpaceDefense
 {
@@ -17,6 +18,7 @@ namespace SpaceDefense
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            InputManager.ShowCursor = false;
 
             Game.Initialize(800, 600, 60, new Level());
             Game.SetWindowTitle("SPACE DEFENSE");

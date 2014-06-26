@@ -10,12 +10,12 @@ namespace SpaceDefense
 {
     class Laser : GameObject
     {
-        public static float SPEED = 16;
+        public static float SPEED = 20;
 
         protected Vector2f velocity;
 
         public Laser(Vector2f direction)
-            : base("LASER", 2, 64, "laser.png")
+            : base("LASER", 2, 128, "laser.png")
         {
             velocity = new Vector2f(direction.Normalize() as Vector2f, SPEED);
         }
