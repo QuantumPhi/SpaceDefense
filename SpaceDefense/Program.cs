@@ -20,7 +20,7 @@ namespace SpaceDefense
             Application.SetCompatibleTextRenderingDefault(false);
             InputManager.ShowCursor = false;
 
-            Game.Initialize(800, 600, 60, new Level());
+            Game.Initialize(1600, 900, 60, new Level());
             Game.SetWindowTitle("SPACE DEFENSE");
 
             while (!Game.quit)

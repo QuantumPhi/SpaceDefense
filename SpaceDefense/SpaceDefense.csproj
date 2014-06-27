@@ -34,7 +34,10 @@
   <ItemGroup>
     <Reference Include="Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Engine.dll</HintPath>
+      <HintPath>..\..\..\Downloads\Day9\Day6\Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX">
+      <HintPath>..\..\..\Downloads\Day9\SlimDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Cannon.cs" />
     <Compile Include="Cursor.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Laser.cs" />
     <Compile Include="Level.cs" />
@@ -57,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector2f.cs" />
     <Compile Include="Vector3f.cs" />
+    <Compile Include="XboxController.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

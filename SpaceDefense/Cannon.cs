@@ -42,9 +42,11 @@ namespace SpaceDefense
             core.Rotation += 2;
             core.Rotation %= 360;
 
-            if (InputManager.IsTriggered(Keys.LButton))
+            Cursor cursor = (ObjectManager.GetObjectByName("CURSOR") as Cursor);
+
+            if (cursor.XBController.IsTriggered(XboxKeys.RT))
             {
-                Vector2f mouse = new Vector2f(InputManager.MousePosition.X - Game.WindowWidth / 2, -InputManager.MousePosition.Y + Game.WindowHeight / 2);
+                Vector2f mouse = new Vector2f(cursor.Position.X, cursor.Position.Y);
                 Vector2f vel = new Vector2f(Position.X - mouse.X, Position.Y - mouse.Y);
                 GameObject laser = new Laser(vel);
                 laser.Position = Position;

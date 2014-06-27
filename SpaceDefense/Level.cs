@@ -14,6 +14,7 @@ namespace SpaceDefense
             base.Create();
 
             GameObject cursor = new Cursor();
+            GameObject player = new Player();
             GameObject cannon1 = new Cannon();
             cannon1.Position.X = 365;
             cannon1.Position.Y = -265;
@@ -27,6 +28,7 @@ namespace SpaceDefense
             cannon4.Position.X = -365;
             cannon4.Position.Y = -265;
             ObjectManager.AddGameObject(cursor);
+            ObjectManager.AddGameObject(player);
             ObjectManager.AddGameObject(cannon1);
             ObjectManager.AddGameObject(cannon2);
             ObjectManager.AddGameObject(cannon3);
