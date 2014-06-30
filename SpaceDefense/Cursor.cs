@@ -33,11 +33,11 @@ namespace SpaceDefense
 
             if (XBController.LeftStick.Position.X > 0.01f || XBController.LeftStick.Position.X < -0.01f)
             {
-                Position.X = Math.Abs(Position.X + XBController.LeftStick.Position.X * 5) < Game.WindowWidth / 2 ? Position.X + XBController.LeftStick.Position.X * 5 : XBController.LeftStick.Position.X < 0 ? -Game.WindowWidth / 2 : Game.WindowWidth / 2;
+                Position.X = Math.Abs(Position.X + XBController.LeftStick.Position.X * 7.5) < Game.WindowWidth / 2 ? Position.X + XBController.LeftStick.Position.X * 7.5f : XBController.LeftStick.Position.X < 0 ? -Game.WindowWidth / 2 : Game.WindowWidth / 2;
             }
             if (XBController.LeftStick.Position.Y > 0.01f || XBController.LeftStick.Position.Y < -0.01f)
             {
-                Position.Y = Math.Abs(Position.Y + XBController.LeftStick.Position.Y * 5) < Game.WindowHeight / 2 ? Position.Y + XBController.LeftStick.Position.Y * 5 : XBController.LeftStick.Position.Y < 0 ? -Game.WindowHeight / 2 : Game.WindowHeight / 2;
+                Position.Y = Math.Abs(Position.Y + XBController.LeftStick.Position.Y * 7.5) < Game.WindowHeight / 2 ? Position.Y + XBController.LeftStick.Position.Y * 7.5f : XBController.LeftStick.Position.Y < 0 ? -Game.WindowHeight / 2 : Game.WindowHeight / 2;
             }
         }
     }

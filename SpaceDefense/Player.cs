@@ -16,6 +16,9 @@ namespace SpaceDefense
         public float rot;
         public XboxController XBController { get; private set; }
 
+        private int timer;
+        private int frequency = 6;
+
         public Player() : base("PLAYER", 70, 64, "ship.png") 
         {
             CollisionData.SetCollisionData(Width / 2);
@@ -48,7 +51,7 @@ namespace SpaceDefense
                 Position.Y = Math.Abs(Position.Y + velocity.Y) < Game.WindowHeight / 2 ? Position.Y + velocity.Y : XBController.LeftStick.Position.Y < 0 ? -Game.WindowHeight / 2 : Game.WindowHeight / 2;
             }
 
-            if (XBController.RightStick.Position.X > 0.01f || XBController.RightStick.Position.X < -0.01f || XBController.RightStick.Position.Y > 0.01f || XBController.RightStick.Position.Y < -0.01f)
+            if (timer == 0 && (XBController.RightStick.Position.X > 0.01f || XBController.RightStick.Position.X < -0.01f || XBController.RightStick.Position.Y > 0.01f || XBController.RightStick.Position.Y < -0.01f))
             {
                 Vector2f vel = new Vector2f(-XBController.RightStick.Position.X, -XBController.RightStick.Position.Y);
                 GameObject bullet = new Bullet(vel);
@@ -60,6 +63,9 @@ namespace SpaceDefense
                 bullet.Position.Y += (float)(24 * Math.Sin(angle + Math.PI / 2));
                 ObjectManager.AddGameObject(bullet);
             }
+
+            timer++;
+            timer %= frequency;
         }
 
         public override void CollisionReaction(CollisionInfo collisionInfo_)
@@ -68,6 +74,9 @@ namespace SpaceDefense
 
             if (collisionInfo_.collidedWithGameObject.Name == "LASER")
                 Health--;
+
+            if (Health <= 0)
+                IsDead = true;
         }
 
         public float AngleDifference(float angle1, float angle2)

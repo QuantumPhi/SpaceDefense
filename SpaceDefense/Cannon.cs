@@ -23,7 +23,7 @@ namespace SpaceDefense
         {
             base.Initialize();
 
-            CollisionData.SetCollisionData(Width, Height);
+            CollisionData.SetCollisionData((float)(Math.Sqrt(2 * Math.Pow(Width / 2, 2))));
             CollisionData.CollisionEnabled = true;
 
             Health = 100;
@@ -59,6 +59,20 @@ namespace SpaceDefense
                 laser.ZOrder = -1;
                 laser.Rotation = (float)(Math.Atan2(vel.Y, vel.X) * 180 / Math.PI + 90);
                 ObjectManager.AddGameObject(laser);
+            }
+        }
+
+        public override void CollisionReaction(CollisionInfo collisionInfo_)
+        {
+            base.CollisionReaction(collisionInfo_);
+
+            if (collisionInfo_.collidedWithGameObject.Name == "BULLET")
+                Health--;
+
+            if (Health <= 0)
+            {
+                IsDead = true;
+                core.IsDead = true;
             }
         }
     }

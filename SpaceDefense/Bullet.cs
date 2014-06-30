@@ -17,7 +17,7 @@ namespace SpaceDefense
         public Bullet(Vector2f direction)
             : base("BULLET", 4, 8, "bullet.png")
         {
-            CollisionData.SetCollisionData(Width, Height);
+            CollisionData.SetCollisionData(2);
             CollisionData.CollisionEnabled = true;
 
             velocity = new Vector2f(direction.Normalize() as Vector2f, SPEED);
