@@ -49,10 +49,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
     <Compile Include="Cannon.cs" />
+    <Compile Include="Collision\Collision.cs" />
+    <Compile Include="Collision\Polygon.cs" />
+    <Compile Include="Collision\Vector.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Vector.cs" />

@@ -10,12 +10,18 @@ namespace SpaceDefense
 {
     class Player : GameObject
     {
+        public int Health { get; set; }
+
         public Vector2f velocity;
         public float rot;
         public XboxController XBController { get; private set; }
 
         public Player() : base("PLAYER", 70, 64, "ship.png") 
         {
+            CollisionData.SetCollisionData(Width / 2);
+            CollisionData.CollisionEnabled = true;
+
+            Health = 10;
             velocity = new Vector2f();
             XBController = new XboxController(SlimDX.XInput.UserIndex.Two);
         }
@@ -54,6 +60,14 @@ namespace SpaceDefense
                 bullet.Position.Y += (float)(24 * Math.Sin(angle + Math.PI / 2));
                 ObjectManager.AddGameObject(bullet);
             }
+        }
+
+        public override void CollisionReaction(CollisionInfo collisionInfo_)
+        {
+            base.CollisionReaction(collisionInfo_);
+
+            if (collisionInfo_.collidedWithGameObject.Name == "LASER")
+                Health--;
         }
 
         public float AngleDifference(float angle1, float angle2)

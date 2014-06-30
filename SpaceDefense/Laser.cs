@@ -17,6 +17,8 @@ namespace SpaceDefense
         public Laser(Vector2f direction)
             : base("LASER", 2, 128, "laser.png")
         {
+            CollisionData.SetCollisionData(Width, Height);
+            CollisionData.CollisionEnabled = true;
             velocity = new Vector2f(direction.Normalize() as Vector2f, SPEED);
         }
 

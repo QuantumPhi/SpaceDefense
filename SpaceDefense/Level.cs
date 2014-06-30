@@ -13,6 +13,8 @@ namespace SpaceDefense
         {
             base.Create();
 
+            Graphics.DrawCollisionData(true);
+
             GameObject cursor = new Cursor();
             GameObject player = new Player();
             GameObject cannon1 = new Cannon();

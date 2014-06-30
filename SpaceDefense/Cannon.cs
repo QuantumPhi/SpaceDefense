@@ -11,6 +11,8 @@ namespace SpaceDefense
 {
     class Cannon : GameObject
     {
+        public int Health { get; set; }
+
         protected GameObject core = new GameObject("CORE", (uint)Math.Round(7 * (48f / 15)), (uint)Math.Round(7 * (48f / 15)), "cannon_core.png");
         protected int fadeTime = 50;
         bool fade;
@@ -21,6 +23,10 @@ namespace SpaceDefense
         {
             base.Initialize();
 
+            CollisionData.SetCollisionData(Width, Height);
+            CollisionData.CollisionEnabled = true;
+
+            Health = 100;
             core.Position = Position;
             ObjectManager.AddGameObject(core);
         }
