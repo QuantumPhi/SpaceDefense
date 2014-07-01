@@ -11,7 +11,7 @@ namespace SpaceDefense
     class Laser : GameObject
     {
         public static float SPEED = 20;
-        public GameObject node = new GameObject("LASER", 10, 10, "laser_core.png");
+        public GameObject node = new GameObject("LASER", 1, 1, "node.png");
         protected Vector2f velocity;
 
         public Laser(Vector2f direction)
@@ -34,6 +34,8 @@ namespace SpaceDefense
         public override void Update()
         {
             base.Update();
+
+            IsDead = node.IsDead;
 
             Position.X -= velocity.X;
             Position.Y -= velocity.Y;

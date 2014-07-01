@@ -9,14 +9,24 @@ namespace SpaceDefense
 {
     class Level : State
     {
+        private bool GameOver = false;
+
+        private XboxController cControl;
+        private XboxController pControl;
+
+        public Level() : base() { }
+
         public override void Create()
         {
             base.Create();
 
             Graphics.DrawCollisionData(true);
 
-            GameObject cursor = new Cursor();
-            GameObject player = new Player();
+            cControl = new XboxController(SlimDX.XInput.UserIndex.One);
+            pControl = new XboxController(SlimDX.XInput.UserIndex.Two);
+
+            GameObject cursor = new Cursor(cControl);
+            GameObject player = new Player(pControl);
             GameObject cannon1 = new Cannon();
             cannon1.Position.X = 365;
             cannon1.Position.Y = -265;
@@ -40,6 +50,25 @@ namespace SpaceDefense
         public override void Update()
         {
             base.Update();
+
+            pControl = pControl == null ? new XboxController(SlimDX.XInput.UserIndex.Two) : pControl;
+
+            if (!GameOver && (ObjectManager.GetAllObjectsByName("CANNON").Count == 0 || 
+                ObjectManager.GetObjectByName("PLAYER") == null))
+            {
+                TextManager.AddText("RESTART", "Press START to restart", FontTypes.Arial32);
+                TextObject text = TextManager.GetTextObjectByName("RESTART");
+                text.Position.X = -Game.WindowWidth / 2;
+                text.Position.Y = Game.WindowHeight / 2;
+                GameOver = true;
+            }
+
+            if (GameOver) 
+            {
+                pControl.Update();
+                if (cControl.IsTriggered(XboxKeys.START) || pControl.IsTriggered(XboxKeys.START))
+                    GameStateManager.GoToState(new Level());
+            }
         }
     }
 }

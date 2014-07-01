@@ -10,12 +10,16 @@ namespace SpaceDefense
 {
     class Cursor : GameObject
     {
-        public XboxController XBController { get; private set; }
+        public XboxController XBController { get; protected set; }
+
         public int ZTarget { get; private set; }
 
-        public Cursor() : base("CURSOR", 25, 25, "cursor.png") 
+        public Cursor(XboxController x) : base("CURSOR", 25, 25, "cursor.png") 
         {
-            XBController = new XboxController(SlimDX.XInput.UserIndex.One);
+            XBController = x;
+
+            CollisionData.SetCollisionData(1);
+            CollisionData.CollisionEnabled = true;
         }
 
         public override void Initialize()

@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="Button.cs" />
     <Compile Include="Cannon.cs" />
     <Compile Include="Cursor.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Laser.cs" />

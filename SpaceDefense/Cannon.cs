@@ -17,6 +17,9 @@ namespace SpaceDefense
         protected int fadeTime = 50;
         bool fade;
 
+        private int timer;
+        private int frequency = 35;
+
         public Cannon() : base("CANNON", 48, 48, "cannon.png") { }
 
         public override void Initialize()
@@ -26,7 +29,7 @@ namespace SpaceDefense
             CollisionData.SetCollisionData((float)(Math.Sqrt(2 * Math.Pow(Width / 2, 2))));
             CollisionData.CollisionEnabled = true;
 
-            Health = 100;
+            Health = 50;
             core.Position = Position;
             ObjectManager.AddGameObject(core);
         }
@@ -50,7 +53,7 @@ namespace SpaceDefense
 
             Cursor cursor = (ObjectManager.GetObjectByName("CURSOR") as Cursor);
 
-            if (cursor.XBController.IsTriggered(XboxKeys.RT))
+            if (timer >= frequency && cursor.XBController.IsTriggered(XboxKeys.RT))
             {
                 Vector2f mouse = new Vector2f(cursor.Position.X, cursor.Position.Y);
                 Vector2f vel = new Vector2f(Position.X - mouse.X, Position.Y - mouse.Y);
@@ -59,7 +62,10 @@ namespace SpaceDefense
                 laser.ZOrder = -1;
                 laser.Rotation = (float)(Math.Atan2(vel.Y, vel.X) * 180 / Math.PI + 90);
                 ObjectManager.AddGameObject(laser);
+                timer = 0;
             }
+
+            timer++;
         }
 
         public override void CollisionReaction(CollisionInfo collisionInfo_)
@@ -67,7 +73,10 @@ namespace SpaceDefense
             base.CollisionReaction(collisionInfo_);
 
             if (collisionInfo_.collidedWithGameObject.Name == "BULLET")
+            {
+                collisionInfo_.collidedWithGameObject.IsDead = true;
                 Health--;
+            }
 
             if (Health <= 0)
             {

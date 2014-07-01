@@ -19,14 +19,14 @@ namespace SpaceDefense
         private int timer;
         private int frequency = 6;
 
-        public Player() : base("PLAYER", 70, 64, "ship.png") 
+        public Player(XboxController x) : base("PLAYER", 70, 64, "ship.png") 
         {
             CollisionData.SetCollisionData(Width / 2);
             CollisionData.CollisionEnabled = true;
 
             Health = 10;
             velocity = new Vector2f();
-            XBController = new XboxController(SlimDX.XInput.UserIndex.Two);
+            XBController = x;
         }
 
         public override void Update()
@@ -73,7 +73,10 @@ namespace SpaceDefense
             base.CollisionReaction(collisionInfo_);
 
             if (collisionInfo_.collidedWithGameObject.Name == "LASER")
+            {
+                collisionInfo_.collidedWithGameObject.IsDead = true;
                 Health--;
+            }
 
             if (Health <= 0)
                 IsDead = true;
