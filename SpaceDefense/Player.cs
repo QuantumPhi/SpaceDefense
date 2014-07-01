@@ -51,6 +51,8 @@ namespace SpaceDefense
                 Position.Y = Math.Abs(Position.Y + velocity.Y) < Game.WindowHeight / 2 ? Position.Y + velocity.Y : XBController.LeftStick.Position.Y < 0 ? -Game.WindowHeight / 2 : Game.WindowHeight / 2;
             }
 
+            HealthBar.Render(Position, Health, 10);
+
             if (timer == 0 && (XBController.RightStick.Position.X > 0.01f || XBController.RightStick.Position.X < -0.01f || XBController.RightStick.Position.Y > 0.01f || XBController.RightStick.Position.Y < -0.01f))
             {
                 Vector2f vel = new Vector2f(-XBController.RightStick.Position.X, -XBController.RightStick.Position.Y);

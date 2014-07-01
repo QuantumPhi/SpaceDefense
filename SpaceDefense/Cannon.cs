@@ -51,6 +51,8 @@ namespace SpaceDefense
             core.Rotation += 2;
             core.Rotation %= 360;
 
+            HealthBar.Render(Position, Health, 50);
+
             Cursor cursor = (ObjectManager.GetObjectByName("CURSOR") as Cursor);
 
             if (timer >= frequency && cursor.XBController.IsTriggered(XboxKeys.RT))
