@@ -18,7 +18,9 @@ namespace SpaceDefense
         bool fade;
 
         private int timer;
-        private int frequency = 35;
+        private int frequency;
+
+        private HealthBar healthBar;
 
         public Cannon() : base("CANNON", 48, 48, "cannon.png") { }
 
@@ -32,11 +34,16 @@ namespace SpaceDefense
             Health = 50;
             core.Position = Position;
             ObjectManager.AddGameObject(core);
+
+            healthBar = new HealthBar((uint)Health, this);
+            ObjectManager.AddGameObject(healthBar);
         }
 
         public override void Update()
         {
             base.Update();
+
+            frequency = ObjectManager.GetAllObjectsByName("CANNON").Count * 8;
 
             core.Position = Position;
             if (fadeTime != 50 && !fade)
@@ -51,7 +58,7 @@ namespace SpaceDefense
             core.Rotation += 2;
             core.Rotation %= 360;
 
-            HealthBar.Render(Position, Health, 50);
+            healthBar.Update();
 
             Cursor cursor = (ObjectManager.GetObjectByName("CURSOR") as Cursor);
 
@@ -82,8 +89,9 @@ namespace SpaceDefense
 
             if (Health <= 0)
             {
-                IsDead = true;
+                healthBar.IsDead = true;
                 core.IsDead = true;
+                IsDead = true;
             }
         }
     }

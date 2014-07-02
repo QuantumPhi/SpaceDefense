@@ -58,6 +58,7 @@
     <Compile Include="Cursor.cs" />
     <Compile Include="HealthBar.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="ParticleSystem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Laser.cs" />

@@ -9,27 +9,37 @@ using System.Windows.Forms;
 
 namespace SpaceDefense
 {
-    class HealthBar
+    class HealthBar : GameObject
     {
-        public static void Render(PointF pos, int health, uint maxHealth)
+        private GameObject type;
+        private uint maxHealth;
+        private int curHealth;
+
+        public HealthBar(uint m, GameObject g)
+            : base("HEALTH", 50, 10, "Health_POSITIVE.png")
+        { maxHealth = m; curHealth = (int)m; type = g; }
+
+        public override void Update()
         {
-            health = health < 0 ? 0 : health;
+            base.Update();
 
-            GameObject temp;
-            for (int i = 0; i < health; i++)
+            Position = type.Position;
+            Position.Y -= 50;
+            if (type is Player)
             {
-                temp = new GameObject("HEALTH", 50 / maxHealth, 5, "Health_POSITIVE.png");
-                temp.Position = pos;
-                temp.Position.Y -= 25;
-                ObjectManager.AddGameObject(temp);
+                if ((type as Player).Health != curHealth)
+                {
+                    Scale.X -= (float)(curHealth - (type as Player).Health) / maxHealth;
+                    curHealth = (type as Player).Health;
+                }
             }
-
-            for (int i = 0; i < maxHealth - health; i++)
+            else if (type is Cannon)
             {
-                temp = new GameObject("HEALTH", 50 / maxHealth, 5, "Health_NEGATIVE.png");
-                temp.Position = pos;
-                temp.Position.Y -= 25;
-                ObjectManager.AddGameObject(temp);
+                if ((type as Cannon).Health != curHealth)
+                {
+                    Scale.X -= (float)(curHealth - (type as Cannon).Health) / maxHealth;
+                    curHealth = (type as Cannon).Health;
+                }
             }
         }
     }

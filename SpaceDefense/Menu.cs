@@ -19,14 +19,9 @@ namespace SpaceDefense
             GameObject cursorB = new Cursor(new XboxController(SlimDX.XInput.UserIndex.Two));
             ObjectManager.AddGameObject(cursorA);
             ObjectManager.AddGameObject(cursorB);
-            GameObject buttonNormal = new Button(256, 64, "laser.png", Button.StateSwitch.NORMAL_MODE);
-            GameObject buttonHard = new Button(256, 64, "laser.png", Button.StateSwitch.HARD_MODE);
+            GameObject start = new Button(512, 256, "startbutton.png", Button.StateSwitch.NORMAL_MODE);
 
-            buttonNormal.Position.X = -200;
-            buttonHard.Position.X = 200;
-
-            ObjectManager.AddGameObject(buttonNormal);
-            ObjectManager.AddGameObject(buttonHard);
+            ObjectManager.AddGameObject(start);
         }
     }
 }

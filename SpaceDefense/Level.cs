@@ -20,8 +20,6 @@ namespace SpaceDefense
         {
             base.Create();
 
-            Graphics.DrawCollisionData(true);
-
             cControl = new XboxController(SlimDX.XInput.UserIndex.One);
             pControl = new XboxController(SlimDX.XInput.UserIndex.Two);
 

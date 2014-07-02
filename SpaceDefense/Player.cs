@@ -19,14 +19,19 @@ namespace SpaceDefense
         private int timer;
         private int frequency = 6;
 
+        private GameObject healthBar;
+
         public Player(XboxController x) : base("PLAYER", 70, 64, "ship.png") 
         {
             CollisionData.SetCollisionData(Width / 2);
             CollisionData.CollisionEnabled = true;
 
-            Health = 10;
+            Health = 15;
             velocity = new Vector2f();
             XBController = x;
+
+            healthBar = new HealthBar((uint)Health, this);
+            ObjectManager.AddGameObject(healthBar);
         }
 
         public override void Update()
@@ -51,7 +56,7 @@ namespace SpaceDefense
                 Position.Y = Math.Abs(Position.Y + velocity.Y) < Game.WindowHeight / 2 ? Position.Y + velocity.Y : XBController.LeftStick.Position.Y < 0 ? -Game.WindowHeight / 2 : Game.WindowHeight / 2;
             }
 
-            HealthBar.Render(Position, Health, 10);
+            healthBar.Update();
 
             if (timer == 0 && (XBController.RightStick.Position.X > 0.01f || XBController.RightStick.Position.X < -0.01f || XBController.RightStick.Position.Y > 0.01f || XBController.RightStick.Position.Y < -0.01f))
             {
@@ -81,7 +86,10 @@ namespace SpaceDefense
             }
 
             if (Health <= 0)
+            {
+                healthBar.IsDead = true;
                 IsDead = true;
+            }
         }
 
         public float AngleDifference(float angle1, float angle2)
